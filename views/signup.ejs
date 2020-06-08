@@ -143,6 +143,10 @@ if(s2.length<8){
           $('#pass').html('Password is short')
 
     }
+    else{
+      $( "#submitbut" ).prop( "disabled", false );
+
+    }
   })
   document.getElementById('inputEmailId').addEventListener('keyup',getInfo);
   document.getElementById('inputEmail').addEventListener('keyup',getData);
