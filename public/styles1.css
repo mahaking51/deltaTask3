@@ -1,0 +1,33 @@
+
+body{
+    background-color: #f4f4f4;
+}  
+h2{
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+h4{
+    text-align: center;
+    margin-bottom: 1.5rem;
+
+}  
+p{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+#formDetails{
+    position: absolute;
+    background-color: white;
+    margin:7.5%;
+    width:50%;
+    padding: 7%;
+    border-radius: 0.25rem;
+    margin-left: 25%;
+}
+#type{
+    margin-bottom: 1.2rem;
+}
+#form{
+    margin:10%;
+}

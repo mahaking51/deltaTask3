@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles1.css">
+    <title>Document</title>
+    <style>
+
+body{
+    background-color: #f4f4f4;
+}  
+h2{
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+h4{
+    text-align: center;
+    margin-bottom: 1.5rem;
+
+}  
+p{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+#formDetails{
+    position: absolute;
+    background-color: white;
+    margin:7.5%;
+    width:70%;
+    padding: 7%;
+    border-radius: 0.25rem;
+    margin-left: 15%;
+}
+#type{
+    margin-bottom: 1.2rem;
+}
+#form{
+    margin:10%;
+}
+#preview{
+    margin-top: 2rem;
+}
+    </style>
+        <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+</head>
+
+<body>
+    <section id='userDetails'>
+        <div class='container' id='formDetails'>
+          <div id='mainForm'>
+            <form action="/invitations" method='post'>
+                <div class="input-group " id='type'>
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Type Of Event</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" name='type'>
+                      <option selected>Choose...</option>
+                      <option value="1" id='bday'>Birthday</option>
+                      <option value="2" id="wed">Wedding</option>
+                      <option value="3" id='funeral'>Funeral</option>
+                    </select>
+                  </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Name<br>(Host)</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control" id="staticEmail" readonly name="host" value='<%=host%>' required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Content</label>
+                  <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="cont" name='content' required></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Venue</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputvenue" name='venue' required>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" id="inputDate" name='date' required>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Time</label>
+                    <div class="col-sm-10">
+                      <input type="time" class="form-control" id="inputTime" name="time" required>
+                    </div>
+                  </div>
+                  <div class="input-group " id='type'>
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Invitees<br>seperate the invitees with commas</label>
+                    </div>
+                    <input type="text" class="form-control" id="inputvenue" name='guests' required>
+                  </div>
+                  <button class="btn btn-success" type='submit'>Send</button>
+                  <script>
+                    CKEDITOR.replace( 'cont' );
+                </script>
+                </form>
+                <button class="btn btn-light" id='preview'>Preview</button>
+
+
+                </div>
+              <div class="container" id='invitation' style='display: none;'>
+                <button class="btn btn-success" id='editback'>Edit</button>
+                <h2 id='eventName'>Happy Birthday</h2>
+                <div class='container'>
+                  <p id="evtDesc">Inviting you all to the auspicious event!!!</p>
+                  <h4 id='venue'>Venue</h4>
+                  <h4 id="date">date</h4>
+                  <h4 id="timing">timing</h4>
+                </div>
+              </div>
+            </div>
+
+    </section>
+</body>
+<script>
+  for (var i in CKEDITOR.instances) {
+                
+                CKEDITOR.instances[i].on('change', function() { CKEDITOR.instances[i].updateElement() });
+                
+        }
+  var now =new Date();
+  s=now.toISOString();
+  d=s.substring(0, 10);
+  t=now.toLocaleTimeString();
+  
+  
+  document.getElementById('inputDate').min=d;
+  document.getElementById('preview').addEventListener('click',function(){
+    document.getElementById('mainForm').style.display='none';
+    document.getElementById('invitation').style.display='block';
+    console.log(document.getElementById('timing').innerHTML=document.getElementById('inputTime').value
+);
+    
+    if(document.getElementById('bday').selected){
+      document.getElementById('eventName').innerHTML='Happy Birthday';
+      document.getElementById('venue').innerHTML=document.getElementById('inputvenue').value;
+      document.getElementById('evtDesc').innerHTML=document.getElementById('cont').value;
+      document.getElementById('timing').innerHTML=document.getElementById('inputTime').value;
+      document.getElementById('date').innerHTML=document.getElementById('inputDate').value;
+    }
+    if(document.getElementById('wed').selected){
+      document.getElementById('eventName').innerHTML='Wedding Invitation';
+      document.getElementById('venue').innerHTML=document.getElementById('inputvenue').value;
+      document.getElementById('evtDesc').innerHTML=document.getElementById('cont').value;
+      document.getElementById('timing').innerHTML=document.getElementById('inputTime').value;
+      document.getElementById('date').innerHTML=document.getElementById('inputDate').value;
+
+    }
+    if(document.getElementById('funeral').selected){
+      document.getElementById('eventName').innerHTML="Memorial Celebration";
+      document.getElementById('venue').innerHTML=document.getElementById('inputvenue').value;
+      document.getElementById('evtDesc').innerHTML=document.getElementById('cont').value;
+      document.getElementById('timing').innerHTML=document.getElementById('inputTime').value;
+      document.getElementById('date').innerHTML=document.getElementById('inputDate').value;
+
+    }
+
+    
+
+
+  })
+  document.getElementById('editback').addEventListener('click',function(){
+    document.getElementById('mainForm').style.display='block';
+    document.getElementById('invitation').style.display='none';
+  })
+</script>
+</html>

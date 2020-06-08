@@ -1,0 +1,57 @@
+#navbar{
+
+   
+    background-image:  url(https://www.smilebox.com/wp-content/uploads/2020/01/CardMaker-Compressed-2020.jpg);
+      
+    
+}
+html{
+    background-color: #f7f7f7;
+}
+body{
+    background-color: #f7f7f7;
+
+}
+a,a:hover{
+    text-decoration: none;
+    color:white;
+}
+
+    h2{
+        text-align: center;
+        color: grey;
+    }
+    .desc{
+        margin-top: 5rem;;
+    }
+    .intro{
+        margin-top:10%;
+    }
+    #mainintro{
+        color:white;
+        text-align: center;
+    }
+    #create{
+        margin-left:41%;
+        margin-bottom: 4rem;
+        padding:1.5rem;
+        background-color: #f76a8c;
+        border-color: #f76a8c;
+        border-radius: 1.75rem;
+        font-size: 1.2rem;
+    }
+    #create:hover{
+        background-color: #fe346e;
+
+    }
+    #signin{
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;;
+        border-radius: 1.3rem;
+        padding: 0.6rem;
+    }
+    #signin:hover{
+        background-color: #f76a8c;
+        border-color: #f76a8c;
+        color:white;
+    }

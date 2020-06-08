@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Mail</title>
+  <style>
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/*Page styles*/
+html { height: 100%; }
+
+body {
+  height: 100%;
+  margin: 0;
+  background: #f7f7f7;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+
+}
+label{
+    margin-left: 1.5rem;
+}
+.boxes {
+    width:40%;
+  margin: auto;
+  padding: 50px;
+  background: white;
+}
+
+/*Checkboxes styles*/
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: black;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+
+input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+button{
+    display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  margin-top: 1.5rem;
+}
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+  </style>
+</head>
+<body>
+    
+        <div class="boxes">
+          <%if(display){%>
+            <div>
+                <p>Email sent Successfully!!</p>
+            </div>
+          <%}%>
+            <form action="<%=id%>" method="post">
+            <h1>Invitees</h1>
+            <h4>Accepted</h4>
+            <%for(var i=0;i<accept.length;i++){%>
+                <input type="checkbox" id="boxa-<%=i%>" >
+                <label for="boxa-<%=i%>"><%=accept[i]%></label>
+            <%}%>
+            
+            <h4>Not yet Accepted</h4>
+            <%for(var i=0;i<decline.length;i++){%>
+            <input type="checkbox" id="boxd-<%=i%>" class='checks'value="<%=decline[i]%>">
+            <label for="boxd-<%=i%>"><%=decline[i]%> </label>
+            <%}%>
+            <button id='sub' name='submit' value>Send E-Invitation</button>
+    
+        </form>
+    
+          </div>
+    
+      
+</body>
+<script>
+    let a='';
+    len=document.getElementsByClassName('checks').length;
+    for(let j=0;j<len;j++){
+        document.getElementById('boxd-'+j).addEventListener('click',function(){
+        if(document.getElementById('boxd-'+j).checked){
+            a=a+(document.getElementById('boxd-'+j).value)+',';
+            document.getElementById('sub').value=a;
+        }
+
+    })
+    }
+   
+</script>
+</html>

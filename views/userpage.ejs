@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=name%></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body{
+    background-color: #f7f7f7;
+}
+.sidebar{
+    display: inline;
+    width:20%;
+    border-style: solid;
+    border-radius: 0.5rem;;
+    border-color: #dbdbdb;
+
+}
+.sidebarOptions{
+    display:block;
+    /* height:20%; */
+    padding:0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    /* margin-top: 1.2rem;
+    margin-bottom: 1.2rem; */
+}
+.sidebarOptions:hover{
+    background-color: #e4e4e4;
+    cursor:pointer;
+}
+#sideContent{
+    display: inline;
+    padding:2%;
+    border-style: solid;
+    border-radius: 0.5rem;;
+    border-color: #dbdbdb;
+}
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+
+#dp{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+#main{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top:1.5rem;
+    height:100%;
+
+}
+.dashboard{
+margin-left: 3rem;;
+margin-right: 3rem;;
+
+}
+#profilePic{
+    display: block;
+    margin:auto;
+
+    margin-top: 3.5rem;
+    margin-bottom: 5.5rem;;
+}
+#follow{
+    margin-left:25%;
+    margin-top: 2rem;
+    width:50%;
+    text-align: center;
+}
+h3{
+    font-weight: 300;
+}
+h4{
+    font-weight: 400;
+}
+#userPic{
+    margin-left: 28%;
+    margin-bottom: 1.2rem;;
+}
+#mode{
+    display: inline;
+    margin-left: 75%;
+    margin-right: 1.2rem;
+    cursor: pointer;
+}
+a{
+    margin-left:20%;
+    font-size: 1.2rem;
+    text-decoration: inherit;
+    color: black;
+}
+a:hover{
+    text-decoration: inherit;
+    color: black;
+  
+}
+#editProfile{
+    margin-left:30%;
+    border-color: #dbdbdb;
+}
+#header{
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+#newArticle{
+    margin-top: 4rem;;
+}
+
+.dark-mode {
+  background-color:#323232;
+  color: #a7e9af;
+}
+#new{
+    width:50%;
+    margin:auto;
+    margin-top: 4rem;;
+
+}
+.dark-mode .sidebarOptions:hover{
+    background-color: #232020;
+    cursor:pointer;
+}
+ .dark-mode hr{
+    border-color: black;
+}
+.dark-mode li{
+    border-color: black;
+    background-color: #323232;
+
+}
+.dark-mode textarea{
+    background-color: #323232;
+ 
+}
+.dark-mode #editProfile{
+    background-color: #323232;
+    border-color: #3797a4;
+    color:#3797a4;
+    font-weight: 500;
+}
+.dark-mode #editProfile:hover{
+    background-color: #3797a4;
+    border-color: #3797a4;
+    color:white;
+    font-weight: 500;
+}
+.dark-mode #newArticle{
+    background-color: #323232;
+    border-color: black;
+
+}
+.dark-mode #newArticle:hover{
+    background-color: #232020;
+    border-color: black;
+}
+.dark-mode input{
+    background-color: #323232;
+
+}
+#left{
+    min-height: 750px;
+}
+.display{
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+#formDetails{
+    background-color: white;
+    width:80%;
+    padding: 7%;
+    border-radius: 0.25rem;
+}
+.success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.success:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+#create{
+    margin-top: 3rem;;
+    width:60%;
+}
+.hover_bkgr_fricc{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.hover_bkgr_fricc .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+.hover_bkgr_fricc > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 60%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+.popupCloseButton {
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+.trigger_popup_fricc {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+img{
+    margin-top:2.5rem;
+    margin-bottom: 5rem;;
+}
+.info{
+    margin-left: 1.5rem;
+}
+#details{
+    background-color: white;
+}
+    </style>
+</head>
+<body>
+    
+    <!--  -->
+    
+    <section id='main' >
+    <div class="row dashboard">
+        <div class='container sidebar col-3 ' id='' style="overflow-y: scroll; overflow-x: hidden;min-height: 700px;">
+            <img src="<%=link%>" alt="" id='profilePic'>
+            <div class='container'id='dp'><h1 id='myuser'><%=name%></h1> 
+            </div>
+            <hr>
+            <div class='container sidebarOptions' id='task1'><h3 id='taskh1'>Profile</h3></div>
+            <hr>
+            <div class='container sidebarOptions' id='task2'><h3 id='taskh2'>Invitations</h3></div>
+            <hr>
+           
+            <a href="/signin"><div class='container sidebarOptions' id='task4' ><h3 id='taskh4'>Log Out</h3></div></a>
+
+        </div>
+        <div class='container-lg col-9 Task1' id='sideContent' style="overflow-y: scroll; height:700px;">
+            <div class="container">
+            <h1><%=name%></h1>
+           
+            <a href="/create/<%=name%>" ><button class='btn btn-primary' id='create'><i class="fas fa-pencil-alt fa-fw mr-2"></i>Create a New Invitation</button></a>
+            </div>
+            <h3 style='margin-top:3rem;'>Scheduled Events</h3>
+  
+            <ul class="list-group" id='schevt'>
+
+           
+            </ul>
+          
+            <h3 style='margin-top:3rem;'>Your Events</h3>
+            <ul class="list-group" id='myevt'>
+
+           
+            </ul>
+        </div>
+        <div class='container-lg col-9 Task2' id='sideContent' style='display:none; overflow-y: auto; overflow-x: hidden;min-height: 700px;' >
+            <h1>Invitations</h1>
+            <% if(invites.length===0){ %>
+                <h1 style="color:#dddddd; margin-top:3rem;">You are all caught up for now !!!</h1>
+
+                <%}%>
+            <ul class="list-group">
+            
+            <% for(var i=0;i<invites.length;i++){ %>
+                <li class="list-group-item" id='list<%=i%>'>Invitation from <%=invites[i].name%> <button class="btn btn-success float-right" id='show<%=i%>'>show</button></li>
+                <div class="container display" id='invite<%=i%>' style="display: none;">
+                    <%=invites[i].invitation%>
+                    <form action="/guest" method="post">
+                    <button class="btn btn-primary success" type='submit' name='accept' value="true">Accept</button>
+                    <button class="btn btn-danger" type='submit' name='accept' value="false">Reject</button>
+                    </form>
+                </div>
+                
+            <% } %>
+            </ul>
+        </div>
+
+        <div class='container-lg col-9 Task3' id='sideContent' style='display:none;' >
+            <h1>Task 3</h1>
+            This is Task 3 div Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class='container-lg col-9 Task4' id='sideContent' style='display:none;' >
+            <h1>Task 4</h1>
+            
+        </div>
+    </div>
+    </section>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script >
+    user=window.location.href;
+    myuser=document.getElementById('myuser').innerHTML;
+    user=user.slice(31)
+    let data;
+    let dat1;
+    function getEmail(){
+        const xhr =new XMLHttpRequest();
+        xhr.open('GET','/emaildetails');
+        xhr.responseType='json';
+        xhr.onload=()=>{
+            data0=xhr.response;
+            console.log(data0);
+            
+        }
+        xhr.send();
+    }
+    function getInfo(){
+        document.getElementById('schevt').innerHTML=''
+        const xhr =new XMLHttpRequest();
+        xhr.open('GET','/schedule/'+myuser);
+        xhr.responseType='json';
+        xhr.onload=()=>{
+            dat1=xhr.response;
+            console.log(dat1);
+            for(var i=0;i<dat1.events.length;i++){
+                document.getElementById('schevt').innerHTML+='<li class="list-group-item">'+dat1.events[i].name+' invitataion at '+dat1.events[i].time+' on '+dat1.events[i].date+'<a class="float-right trigger_popup_fricc" id="pop'+i+'">View Invitation</a></li>'
+                document.getElementsByTagName('body')[0].innerHTML+='<div class="hover_bkgr_fricc" \                                                     id="popupIn'+i+'">\
+                                                                    <span class="helper"></span>\
+                                                                    <div>\
+                                                                     <div class="popupCloseButton">&times;</div>\
+                                                                    <div id="preinvite">'+dat1.events[i].invitation+'</div> </div>\
+                                                                    </div>'
+            }   
+                                                                    
+                                                                   
+        }
+        xhr.send();
+    }
+    getInfo();
+    function getEvt(){
+        const xhr= new XMLHttpRequest();
+        xhr.open('GET','/myevts/'+myuser);
+        xhr.responseType='json';
+        xhr.onload=()=>{
+            dat2=xhr.response;
+            console.log(dat2);
+            for (var i=0;i<dat2.length;i++){
+                sum=dat2[i].guests.length+dat2[i].invitees.length;
+                exp=dat2[i].guests.length+dat2[i].secGuests;
+                foodsugg=dat2[i].food.toString();
+                if(dat2[i].eventType==='1'){
+                    document.getElementById('myevt').innerHTML+='<li class="list-group-item">Your birthday event  <span class="float-right">  invitees:'+sum+'<span>   </span>  <button class="btn btn-primary info" id="moreinfo'+i+'">View More</button></span><div class="container att" id="details'+i+'" style="display:none">'+'expected no.of guests:'+exp+'<br>Suggested food: '+foodsugg+'<form  action="/email" method="post"><button class="btn btn-warning" name="submit" value="'+dat2[i]._id+'">Remind them by sending Email</button></form></div></li>'
+                }
+                if(dat2[i].eventType==='2'){
+                    document.getElementById('myevt').innerHTML+='<li class="list-group-item">Your wedding event  <span class="float-right"> invitees:'+sum+' <span>   </span>  <button class="btn btn-primary info" id="moreinfo'+i+'">View More</button></span><div class="container att" id="details'+i+'" style="display:none">'+'expected no.of guests:'+exp+'<br>Suggested food: '+foodsugg+'<form method="post" action="/email"><button class="btn btn-warning" name="submit" value="'+dat2[i]._id+'">Remind them by sending Email</button></form></div></li>'
+                }
+                if(dat2[i].eventType==='3'){
+                    document.getElementById('myevt').innerHTML+='<li class="list-group-item">Funeral event  <span class="float-right"> invitees:'+sum+' <span>   </span>  <button class="btn btn-primary info" id="moreinfo'+i+'">View More</button></span><div class="container att" id="details'+i+'" style="display:none">'+'expected no.of guests:'+exp+'<br>Suggested food: '+foodsugg+'<form method="post" action="/email"><button class="btn btn-warning" name="submit" value="'+dat2[i]._id+'">Remind them by sending Email</button></form></div></li>'
+
+                }
+            }
+        }
+        xhr.send();
+    }
+    getEvt();
+    function getData(t){
+        n=document.getElementById('list'+t).innerHTML;
+        
+        const xhr= new XMLHttpRequest();
+        xhr.open('GET','/invites/'+user);
+        xhr.responseType='json';
+        xhr.onload=()=>{
+            data=xhr.response;
+            console.log(data);
+
+        }
+        xhr.send();
+    }
+window.addEventListener('load', (event) => {
+        let len1=document.getElementsByClassName('trigger_popup_fricc').length;
+        let attLen=document.getElementsByClassName('att').length;
+        console.log(attLen);
+        
+        q=1
+    console.log(len1);
+    for(let i=0;i<attLen;i++){
+        document.getElementById('moreinfo'+i).addEventListener('click',function(){
+            if(document.getElementById('moreinfo'+i).innerHTML==='View More'){
+                document.getElementById('details'+i).style.display='block';
+                document.getElementById('moreinfo'+i).innerHTML='hide';
+            }
+            else{
+                document.getElementById('details'+i).style.display='none';
+                document.getElementById('moreinfo'+i).innerHTML='View More';
+
+            }
+        })
+    }
+    for(let j=0;j<len1;j++){
+        document.getElementById('pop'+j).addEventListener('click',function(){
+            console.log('clciked');
+            $('#popupIn'+j).show();
+            
+        })
+        document.getElementById('popupIn'+j).addEventListener('click',function(){
+            $('#popupIn'+j).hide();
+            console.log('displ');
+            
+        })
+        document.getElementById('popupIn'+j).addEventListener('click',function(){
+            $('#popupIn'+j).hide();
+
+        })
+    }
+    len=document.getElementsByClassName('btn-success').length;
+    for(let i=0;i<len;i++){
+        getData(i);
+        
+        document.getElementById('show'+i).addEventListener('click',function(){
+            if(document.getElementById('show'+i).innerHTML==='show'){
+                document.getElementById('show'+i).innerHTML='hide';
+                document.getElementById('invite'+i).style.display='block';
+
+            }
+            else{
+                document.getElementById('show'+i).innerHTML='show';
+                document.getElementById('invite'+i).style.display='none';
+
+            }
+            s=document.getElementById('invite'+i).innerHTML
+            document.getElementById('invite'+i).innerHTML='';
+            document.getElementById('invite'+i).innerHTML="<div class='container' id='formDetails'>"+data[i].invitation+
+                                                            "<form action='/guest' method='post'>\
+                                                            <button class='btn btn-primary success' id='moreView' type='submit' name='accept' value='true,"+data[i]._id+","+myuser+"'>Accept</button>\
+                                                            <button class='btn btn-danger' type='submit' name='accept' value='false,"+data[i]._id+","+myuser+"'>Reject</button>\
+                                                            </form>\
+                                                             </div>"
+
+        })
+    }
+
+    $('#task2').click(function(){
+        
+        $('.Task2').show();
+        $('#taskh2').css("font-weight","300");
+        $('.Task1').hide();
+        $('.Task3').hide();
+        $('.Task4').hide();
+
+    })
+    $('#task3').click(function(){
+        $('.Task3').show();
+        $('#taskh3').css("font-weight","300");
+
+        $('.Task1').hide();
+        $('.Task2').hide();
+        $('.Task4').hide();
+
+    })
+    $('#task4').click(function(){
+        $('.Task4').show();
+        $("#taskh4").css("font-weight","300");
+
+        $('.Task1').hide();
+        $('.Task3').hide();
+        $('.Task2').hide();
+
+    })
+    $('#task1').click(function(){
+        $('.Task1').show();
+        $('#taskh1').css("font-weight","300");
+
+        $('.Task2').hide();
+        $('.Task3').hide();
+        $('.Task4').hide();
+
+    })
+
+
+    
+    
+    })
+    
+</script>
+</html>
