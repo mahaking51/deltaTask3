@@ -107,7 +107,7 @@ input[type="checkbox"]:checked + label:before {
             <h1>Invitees</h1>
             <h4>Accepted</h4>
             <%for(var i=0;i<accept.length;i++){%>
-                <input type="checkbox" id="boxa-<%=i%>" >
+                <input type="checkbox" id="boxa-<%=i%>" class='checks' value="<%=accept[i]%>" >
                 <label for="boxa-<%=i%>"><%=accept[i]%></label>
             <%}%>
             
@@ -133,7 +133,12 @@ input[type="checkbox"]:checked + label:before {
             a=a+(document.getElementById('boxd-'+j).value)+',';
             document.getElementById('sub').value=a;
         }
-
+      })
+        document.getElementById('boxa-'+j).addEventListener('click',function(){
+        if(document.getElementById('boxa-'+j).checked){
+            a=a+(document.getElementById('boxa-'+j).value)+',';
+            document.getElementById('sub').value=a;
+        }
     })
     }
    
