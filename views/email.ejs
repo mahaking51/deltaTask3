@@ -107,13 +107,13 @@ input[type="checkbox"]:checked + label:before {
             <h1>Invitees</h1>
             <h4>Accepted</h4>
             <%for(var i=0;i<accept.length;i++){%>
-                <input type="checkbox" id="boxa-<%=i%>" class='checks' value="<%=accept[i]%>" >
+                <input type="checkbox" id="boxa-<%=i%>" class='checksacc' value="<%=accept[i]%>" >
                 <label for="boxa-<%=i%>"><%=accept[i]%></label>
             <%}%>
             
             <h4>Not yet Accepted</h4>
             <%for(var i=0;i<decline.length;i++){%>
-            <input type="checkbox" id="boxd-<%=i%>" class='checks'value="<%=decline[i]%>">
+            <input type="checkbox" id="boxd-<%=i%>" class='checksdec'value="<%=decline[i]%>">
             <label for="boxd-<%=i%>"><%=decline[i]%> </label>
             <%}%>
             <button id='sub' name='submit' value>Send E-Invitation</button>
@@ -126,14 +126,17 @@ input[type="checkbox"]:checked + label:before {
 </body>
 <script>
     let a='';
-    len=document.getElementsByClassName('checks').length;
-    for(let j=0;j<len;j++){
+    lena=document.getElementsByClassName('checksacc').length;
+    lend=document.getElementsByClassName('checksdec').length;
+    for(let j=0;j<lend;j++){
         document.getElementById('boxd-'+j).addEventListener('click',function(){
         if(document.getElementById('boxd-'+j).checked){
             a=a+(document.getElementById('boxd-'+j).value)+',';
             document.getElementById('sub').value=a;
         }
       })
+      }
+      for(let j=0;j<lena;j++){
         document.getElementById('boxa-'+j).addEventListener('click',function(){
         if(document.getElementById('boxa-'+j).checked){
             a=a+(document.getElementById('boxa-'+j).value)+',';
